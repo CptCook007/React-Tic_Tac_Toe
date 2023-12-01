@@ -1,0 +1,27 @@
+import { useState } from "react";
+function GameBoard({ playerHandler, board }) {
+  console.log(board);
+  return (
+    <ol id="game-board">
+      {board.map((row, rowIndex) => (
+        <li key={rowIndex}>
+          <ol>
+            {row.map((playerSymbol, colIndex) => (
+              <li key={colIndex}>
+                <button
+                  onClick={() => {
+                    playerHandler(rowIndex, colIndex);
+                  }}
+                  disabled={playerSymbol !== null}
+                >
+                  {playerSymbol}
+                </button>
+              </li>
+            ))}
+          </ol>
+        </li>
+      ))}
+    </ol>
+  );
+}
+export default GameBoard;
